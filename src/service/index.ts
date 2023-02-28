@@ -5,8 +5,8 @@ const http = axios.create({
     baseURL: "https://warehouse519.azurewebsites.net/api"
 })
 
-export async function getShipment(ShipperId: string): Promise<any> {
+export async function getShipment(ShipperID: string): Promise<any> {
     return http.get(`/FetchData`, {
-        params: {ShipperId: ShipperId}
+        params: {ShipperID: ShipperID}
     })
 }
