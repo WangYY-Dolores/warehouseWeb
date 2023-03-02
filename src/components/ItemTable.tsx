@@ -18,7 +18,7 @@ interface Row {
     |"BoxesRcvd"
   label: string;
   minWidth?: number;
-  align?: "right";
+  align?: "center";
   format?: (value: number) => string;
 }
 
@@ -42,9 +42,6 @@ interface ItemTableProps {
   data: RowData[]
 }
 export const ItemTable = ({data}: ItemTableProps) => {
-  const [page,setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  console.log(data)
   return (
     <Paper sx = {{ width: "100%", overflow: "hidden"}}>
       <TableContainer sx = {{maxHeight: 440}}>
@@ -59,15 +56,15 @@ export const ItemTable = ({data}: ItemTableProps) => {
             </TableRow>
           </TableHead>
           <TableBody>
-                {
-                  data.map((row: RowData) => (<TableRow>
-                    <TableCell key={row.Date}>{row.Date}</TableCell>
-                    <TableCell key={row.WarehouseID}>{row.WarehouseID}</TableCell>
-                    <TableCell key={row.ShippingPO}>{row.ShippingPO}</TableCell>
-                    <TableCell key={row.ShipmentID}>{row.ShipmentID}</TableCell>
-                    <TableCell key={row.BoxesRcvd}>{row.BoxesRcvd}</TableCell>
-                  </TableRow>))
-                }
+            {data.map((row: RowData) => (
+                <TableRow key={row.ShipmentID}>
+                  <TableCell>{row.Date}</TableCell>
+                  <TableCell>{row.WarehouseID}</TableCell>
+                  <TableCell>{row.ShippingPO}</TableCell>
+                  <TableCell>{row.ShipmentID}</TableCell>
+                  <TableCell>{row.BoxesRcvd}</TableCell>
+                </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
