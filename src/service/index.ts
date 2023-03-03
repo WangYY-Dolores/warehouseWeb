@@ -6,7 +6,7 @@ const http = axios.create({
     baseURL: global.BASE_API_URL,
     headers: {
         "accept": "application/json",
-        // "x-functions-clientid" : global.TOKEN
+        "x-functions-key": global.TOKEN
     }
 })
 
